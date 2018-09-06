@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Signature } from './components/signature';
 import './App.css';
+import { PhotoPicker } from './components/photo-picker';
 
 class App extends Component {
   constructor(props) {
@@ -10,12 +11,14 @@ class App extends Component {
 
   onSubmit = () => {
     console.log(this.signature.getDataURL());
-  }
+  };
 
   render() {
     return (
       <div className="form-container">
-        <Signature ref={ref => this.signature = ref}></Signature>
+        <h4>4 Corner Photos</h4>
+        <PhotoPicker />
+        <Signature ref={ref => (this.signature = ref)} />
         <button onClick={this.onSubmit}>Submit</button>
       </div>
     );
