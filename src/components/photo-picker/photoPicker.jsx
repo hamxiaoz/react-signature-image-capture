@@ -5,3 +5,5 @@ function PhotoPicker(props) {
     <input type="file" accept="image/*"></input>
   );
 }
+
+export default PhotoPicker;
