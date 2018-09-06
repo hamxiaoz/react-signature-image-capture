@@ -13,7 +13,7 @@ class Signature extends Component {
 
   getDataURL = () => {
     return this.sigPad.toDataURL();
-  }
+  };
 
   clear = () => {
     this.sigPad.clear();
@@ -29,19 +29,20 @@ class Signature extends Component {
   render() {
     return (
       <div>
-        <div className="sig-container">
-          <SignatureCanvas
-            penColor="black"
-            canvasProps={{ width: 500, height: 200, className: 'sig-canvas' }}
-            onEnd={this.updateClearButton}
-            ref={ref => {
-              this.sigPad = ref;
-            }}
-          />
+        <div className="sig-controls">
+          <label>Signature</label>
           <button onClick={this.clear} disabled={this.state.clearButtonDisabled}>
             Clear
           </button>
         </div>
+        <SignatureCanvas
+          penColor="black"
+          canvasProps={{ width: 500, height: 200, className: 'sig-canvas' }}
+          onEnd={this.updateClearButton}
+          ref={ref => {
+            this.sigPad = ref;
+          }}
+        />
       </div>
     );
   }

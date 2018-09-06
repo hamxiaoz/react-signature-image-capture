@@ -1,6 +1,9 @@
-/* .sig-container {
-  text-align: center;
-} */
+.sig-controls {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  margin-bottom: 5px;
+}
 
 .sig-canvas {
   border: 1px solid #eee;
