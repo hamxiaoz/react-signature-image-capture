@@ -15,9 +15,11 @@ class App extends Component {
 
   render() {
     return (
-      <div className="form-container">
-        <h4>4 Corner Photos</h4>
-        <PhotoPicker />
+      <div className="app">
+        <div className="photo-pickers">
+          <label>4 Corner Photos</label>
+          <PhotoPicker />
+        </div>
         <Signature ref={ref => (this.signature = ref)} />
         <button onClick={this.onSubmit}>Submit</button>
       </div>
