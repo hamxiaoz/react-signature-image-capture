@@ -3,9 +3,9 @@ import SignatureCanvas from 'react-signature-canvas';
 import './signature.css';
 
 class Signature extends Component {
-  sigPad = null;
   constructor(props) {
     super(props);
+    this.sigPad = null;
     this.state = {
       clearButtonDisabled: true
     };
