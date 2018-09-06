@@ -11,6 +11,10 @@ class Signature extends Component {
     };
   }
 
+  getDataURL = () => {
+    return this.sigPad.toDataURL();
+  }
+
   clear = () => {
     this.sigPad.clear();
     this.updateClearButton();
