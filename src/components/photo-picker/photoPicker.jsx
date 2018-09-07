@@ -19,9 +19,10 @@ class PhotoPicker extends React.Component {
     const {files} = target;
 
     if (files && files[0]) {
+      this.setState({loading: true});
       var reader = new FileReader();
 
-      reader.onloadstart = () => this.setState({loading: true});
+      // reader.onloadstart = () => this.setState({loading: true});
 
       reader.onload = event => {
         this.setState({
