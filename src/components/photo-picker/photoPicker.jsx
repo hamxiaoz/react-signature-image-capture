@@ -8,7 +8,6 @@ class PhotoPicker extends React.Component {
 
     this.state = {
       data: null,
-      fullscreen: false,
       loading: false
     };
 
@@ -63,6 +62,7 @@ class PhotoPicker extends React.Component {
           {loading &&
             <span>Loading...</span>
           }
+
         </div>
       </div>
     );
