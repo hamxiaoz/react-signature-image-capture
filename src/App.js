@@ -6,7 +6,6 @@ import { PhotoPicker } from './components/photo-picker';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.signature = null;
     this.state = {
       corner1: '',
       corner2: '',
@@ -16,16 +15,15 @@ class App extends Component {
     };
   }
 
-  onSubmit = () => {
-    console.log(this.signature.getDataURL());
-    this.setState({
-      signature: this.signature.getDataURL()
-    });
-  };
-
   handlePhotoPicked = (corner, data) => {
     this.setState({
       [corner]: data
+    });
+  };
+
+  handleSignatureEnd = data => {
+    this.setState({
+      signature: data
     });
   };
 
@@ -41,8 +39,7 @@ class App extends Component {
             <PhotoPicker id="corner4" picked={data => this.handlePhotoPicked('corner4', data)} />
           </div>
         </div>
-        <Signature ref={ref => (this.signature = ref)} />
-        <button onClick={this.onSubmit}>Submit</button>
+        <Signature onSignatureEnd={this.handleSignatureEnd} />
 
         <hr />
         <p>Debug:</p>

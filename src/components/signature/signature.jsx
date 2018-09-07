@@ -11,19 +11,16 @@ class Signature extends Component {
     };
   }
 
-  getDataURL = () => {
-    return this.sigPad.toDataURL();
-  };
-
   clear = () => {
     this.sigPad.clear();
-    this.updateClearButton();
+    this.handleOnEnd();
   };
 
-  updateClearButton = () => {
+  handleOnEnd = () => {
     this.setState({
       clearButtonDisabled: this.sigPad.isEmpty()
     });
+    this.props.onSignatureEnd(this.sigPad.isEmpty() ? null : this.sigPad.toDataURL());
   };
 
   render() {
@@ -38,7 +35,7 @@ class Signature extends Component {
         <SignatureCanvas
           penColor="black"
           canvasProps={{ width: 500, height: 200, className: 'sig-canvas' }}
-          onEnd={this.updateClearButton}
+          onEnd={this.handleOnEnd}
           ref={ref => {
             this.sigPad = ref;
           }}
