@@ -42,6 +42,7 @@ class PhotoPicker extends React.Component {
 
     return (
       <div className='photo-picker-container'>
+        <h1>{loading.toString()}</h1>
 
         <input
           id={this.props.id}
