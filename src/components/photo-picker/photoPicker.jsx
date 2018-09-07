@@ -20,6 +20,8 @@ class PhotoPicker extends React.Component {
 
     if (files && files[0]) {
       this.setState({loading: true});
+
+      // use timeout so it shows loading indicator correctly on iPad
       setTimeout(() => {
         const reader = new FileReader();
         reader.onload = event => {
@@ -41,8 +43,6 @@ class PhotoPicker extends React.Component {
 
     return (
       <div className='photo-picker-container'>
-        <h1>{loading.toString()}</h1>
-
         <input
           id={this.props.id}
           type="file"
