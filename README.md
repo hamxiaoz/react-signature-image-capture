@@ -1,1 +1,1 @@
-# POC
+# Signature and Image Picker
