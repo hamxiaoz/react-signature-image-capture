@@ -13,8 +13,6 @@ class PhotoPicker extends React.Component {
     };
 
     this.handleFileChange = this.handleFileChange.bind(this);
-    this.handlePreviewClick = this.handlePreviewClick.bind(this);
-    this.handleClearClick = this.handleClearClick.bind(this);
   }
 
   handleFileChange(event) {
@@ -31,40 +29,22 @@ class PhotoPicker extends React.Component {
           data: event.target.result,
           loading: false
         });
+        this.props.picked(event.target.result);
       };
 
       reader.readAsDataURL(files[0]);
     }
   }
 
-  handleClearClick() {
-    this.setState({
-      data: null,
-      fullScreen: false
-    });
-  }
-
-  handlePreviewClick() {
-    const {data, fullScreen} = this.state;
-
-    if (!data) {
-      return;
-    }
-
-    this.setState({fullScreen: !fullScreen});
-  }
-
   render() {
-    const {data, fullScreen, loading} = this.state;
+    const {data, loading} = this.state;
     const backgroundImage = data ? {backgroundImage: `url(${data})`} : null;
-    const previewClasses = ['preview', fullScreen ? 'preview--fullscreen' : ''].join(' ');
-
 
     return (
       <div className='photo-picker-container'>
 
         <input
-          id="car"
+          id={this.props.id}
           type="file"
           accept="image/*"
           capture="camera"
@@ -72,25 +52,18 @@ class PhotoPicker extends React.Component {
         />
 
         <div
-          className={previewClasses}
+          className='preview'
           style={backgroundImage}
-          onClick={this.handlePreviewClick}
         >
-          {!data && !loading &&
-            <label htmlFor="car">
-              Click to capture
-            </label>
-          }
+          <label htmlFor={this.props.id}>
+            {!data && !loading && <span>+</span>}
+            {data && <span> </span>}
+          </label>
 
           {loading &&
             <span>Loading...</span>
           }
         </div>
-
-        <button type='button' onClick={this.handleClearClick}>
-          Clear Image
-        </button>
-
       </div>
     );
   }
